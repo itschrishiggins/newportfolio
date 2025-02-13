@@ -1,0 +1,49 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+.expertise-container {
+  text-align: right;
+
+  .expertise-tiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .tile {
+      border: 1px solid $text-color;
+      color: $text-color;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      width: auto;
+
+      i {
+        font-size: 1.5rem;
+        margin-right: 0.5rem;
+      }
+
+      span {
+        font-size: 1rem;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    text-align: center;
+
+    .expertise-tiles {
+      justify-content: center;
+    }
+  }
+}

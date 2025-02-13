@@ -1,0 +1,53 @@
+// Import all styles
+@use "utils/index" as *;
+
+@use "base/reset";
+
+@use "layout/navbar";
+@use "layout/header";
+@use "layout/projects";
+@use "layout/expertise";
+@use "layout/experience";
+@use "layout/contact";
+
+@use "components/buttons";
+
+.glitch-title {
+  font-size: 2.5rem;
+}
+
+body {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.main-container {
+  margin: 5rem 14vw;
+
+  .glitch-title {
+    margin-bottom: 2rem;
+  }
+}
+
+.content-container {
+  .contact-container {
+    margin: 10rem 0 0 0;
+    padding: 3rem 14vw;
+    color: $text-color;
+
+    .glitch-title {
+      font-size: 2rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    margin: 2rem 5vw;
+  }
+
+  .content-container {
+    .contact-container {
+      padding: 2rem 5vw;
+    }
+  }
+}

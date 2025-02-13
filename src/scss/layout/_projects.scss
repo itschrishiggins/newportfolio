@@ -1,0 +1,145 @@
+@use "../utils/index" as *;
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+.projects-container {
+  .projects-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .project {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      border-radius: $border-radius;
+      border: 1px solid #18181888;
+      color: $text-color;
+
+      &:nth-child(odd) {
+        flex-direction: row;
+
+        .project-info {
+          .project-description,
+          .project-link {
+            color: $text-color;
+          }
+
+          .badges-container {
+            display: flex;
+            justify-content: flex-start;
+            .badge {
+              background-color: $text-color;
+              color: $background-color;
+            }
+          }
+        }
+
+        .project-image {
+          img {
+            width: 100%;
+            height: auto;
+            border-radius: $border-radius 0 0 $border-radius;
+          }
+        }
+      }
+
+      &:nth-child(even) {
+        flex-direction: row-reverse;
+
+        .project-info {
+          text-align: right;
+
+          .project-description,
+          .project-link {
+            color: $text-color;
+          }
+
+          .badges-container {
+            display: flex;
+            justify-content: flex-end;
+            .badge {
+              background-color: $text-color;
+              color: $background-color;
+            }
+          }
+        }
+
+        .project-image {
+          img {
+            width: 100%;
+            height: auto;
+            border-radius: 0 $border-radius $border-radius 0;
+          }
+        }
+      }
+
+      .project-image {
+        flex: 1;
+
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: $border-radius 0 0 $border-radius;
+        }
+      }
+
+      .project-info {
+        flex: 1;
+
+        .project-title {
+          font-size: 1.5rem;
+          margin-bottom: 3rem;
+        }
+
+        .project-description {
+          font-size: 1rem;
+          margin-bottom: 1rem;
+        }
+
+        .project-link {
+          color: $link-color;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        .badges-container {
+          display: flex;
+          gap: 0.5rem;
+          margin-top: 0.5rem;
+
+          .badge {
+            background-color: $background-color;
+            color: $text-color;
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .project {
+      flex-direction: column;
+
+      .project-info {
+        text-align: center;
+
+        .badges-container {
+          justify-content: center;
+        }
+      }
+
+      .project-image {
+        img {
+          border-radius: $border-radius;
+        }
+      }
+    }
+  }
+}
