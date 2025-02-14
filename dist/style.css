@@ -137,7 +137,7 @@ body {
 }
 .title-container .title {
   font-size: 4rem;
-  font-weight: 800;
+  font-weight: 700;
   font-family: "SoureCode Pro", monospace;
   opacity: 0;
 }
@@ -168,8 +168,8 @@ body {
   }
   .title-container .title {
     font-size: 3rem;
-    font-weight: 800;
-    font-family: "SoureCode Pro", monospace;
+    font-weight: 700;
+    font-family: "JetBrains Mono", monospace;
   }
   .title-container .subtitle {
     font-size: 1.2rem;
