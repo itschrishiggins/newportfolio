@@ -120,6 +120,12 @@ body {
   text-align: center;
   margin: 0 5vw;
 }
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    height: auto;
+  }
+}
 
 .title-container {
   display: flex;
@@ -150,6 +156,21 @@ body {
   font-family: "JetBrains Mono", monospace;
   opacity: 0;
 }
+@media (max-width: 768px) {
+  .title-container {
+    width: 100%;
+    height: 100vh;
+    align-items: flex-start;
+    justify-content: flex-start;
+    justify-content: center;
+  }
+  .title-container .title {
+    font-size: 3rem;
+  }
+  .title-container .subtitle {
+    font-size: 1.2rem;
+  }
+}
 
 .about-container {
   display: flex;
@@ -173,33 +194,11 @@ body {
 .about-container p:nth-of-type(2) {
   text-align: right;
 }
-
 @media (max-width: 768px) {
-  .header-container {
-    display: flex;
-    flex-direction: column-reverse;
-    height: auto;
-    margin: 0 2vw;
-  }
-  .title-container,
   .about-container {
     width: 100%;
     align-items: center;
     text-align: center;
-  }
-  .title-container {
-    order: 1;
-    height: 100vh;
-    justify-content: center;
-  }
-  .title-container .title {
-    font-size: 3rem;
-  }
-  .title-container .subtitle {
-    font-size: 1.2rem;
-  }
-  .about-container {
-    order: 2;
   }
   .about-container .about-title {
     font-size: 1.5rem;
@@ -208,6 +207,7 @@ body {
     text-align: center;
   }
 }
+
 .projects-container .projects-section {
   display: flex;
   flex-direction: column;
@@ -303,17 +303,43 @@ body {
   font-size: 0.85rem;
 }
 @media (max-width: 768px) {
+  .projects-container .projects-section {
+    gap: 1rem;
+  }
   .projects-container .project {
-    flex-direction: column;
+    flex-direction: column !important;
+    align-items: flex-start !important;
   }
-  .projects-container .project .project-info {
-    text-align: center;
-  }
-  .projects-container .project .project-info .badges-container {
-    justify-content: center;
+  .projects-container .project .project-image {
+    width: 100% !important;
   }
   .projects-container .project .project-image img {
-    border-radius: 5px;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 5px 5px 0 0 !important;
+  }
+  .projects-container .project .project-info {
+    width: 100% !important;
+    text-align: left !important;
+    padding: 1rem !important;
+  }
+  .projects-container .project .project-info .project-title {
+    font-size: 1.2rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .projects-container .project .project-info .project-description {
+    font-size: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .projects-container .project .project-info .project-link {
+    color: #181818 !important;
+    text-decoration: none !important;
+  }
+  .projects-container .project .project-info .project-link:hover {
+    text-decoration: underline !important;
+  }
+  .projects-container .project .project-info .badges-container {
+    justify-content: flex-start !important;
   }
 }
 

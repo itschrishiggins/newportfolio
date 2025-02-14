@@ -1,47 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Apply PowerGlitch to the title, subtitle, and arrow
+  // Apply PowerGlitch to the specified element
   const applyGlitch = (selector, delay, infinite = false) => {
     setTimeout(() => {
       const element = document.querySelector(selector);
-      element.style.opacity = '1';
-      PowerGlitch.glitch(selector, {
-        playMode: 'always',
-        createContainers: true,
-        hideOverflow: true,
-        timing: {
-          duration: 2500,
-          iterations: infinite ? Infinity : 1, // Ensure the glitch effect stops after one iteration unless infinite
-        },
-        glitchTimeSpan: {
-          start: 0,
-          end: 0.5,
-        },
-        shake: {
-          velocity: infinite ? 80 : 15, // Increase velocity for infinite glitch
-          amplitudeX: infinite ? 0.5 : 0.2, // Increase amplitude for infinite glitch
-          amplitudeY: infinite ? 0.5 : 0.2, // Increase amplitude for infinite glitch
-        },
-        slice: {
-          count: infinite ? 60 : 6, // Increase slice count for infinite glitch
-          velocity: 15,
-          minHeight: 0.02,
-          maxHeight: 0.15,
-          hueRotate: true,
-        },
-        pulse: false,
-      });
+      if (element) {
+        element.style.opacity = '1';
+        PowerGlitch.glitch(selector, {
+          playMode: 'always',
+          createContainers: true,
+          hideOverflow: true,
+          timing: {
+            duration: 2500,
+            iterations: infinite ? Infinity : 1,
+          },
+          glitchTimeSpan: {
+            start: 0,
+            end: 0.5,
+          },
+          shake: {
+            velocity: infinite ? 80 : 15,
+            amplitudeX: infinite ? 0.5 : 0.2,
+            amplitudeY: infinite ? 0.5 : 0.2,
+          },
+          slice: {
+            count: infinite ? 60 : 6,
+            velocity: 15,
+            minHeight: 0.02,
+            maxHeight: 0.15,
+            hueRotate: true,
+          },
+          pulse: false,
+        });
 
-      if (infinite) {
-        // Position the arrow in the center near the bottom
-        const scrollDown = document.getElementById("scroll-down");
-        const arrow = scrollDown.querySelector("span");
-        arrow.style.display = "block";
-        arrow.style.fontSize = "2rem";
-        arrow.style.cursor = "pointer";
-        scrollDown.style.position = "absolute";
-        scrollDown.style.bottom = "20px";
-        scrollDown.style.left = "50%";
-        scrollDown.style.transform = "translateX(-50%)";
+        if (infinite) {
+          const scrollDown = document.getElementById("scroll-down");
+          const arrow = scrollDown.querySelector("span");
+          arrow.style.display = "block";
+          arrow.style.fontSize = "2rem";
+          arrow.style.cursor = "pointer";
+          scrollDown.style.position = "absolute";
+          scrollDown.style.bottom = "20px";
+          scrollDown.style.left = "50%";
+          scrollDown.style.transform = "translateX(-50%)";
+        }
       }
     }, delay);
   };
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Glitch titles with the glitch-title class when they come into view
   const glitchTitles = document.querySelectorAll('.glitch-title');
-  const observer = new IntersectionObserver((entries) => {
+  const titleObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         PowerGlitch.glitch(entry.target, {
@@ -95,49 +96,52 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           pulse: false,
         });
-
-        // Find the associated glitch-section and apply the glitch effect
-        const nextSection = entry.target.closest('.projects-container').querySelector('.glitch-section');
-        if (nextSection) {
-          setTimeout(() => {
-            nextSection.style.opacity = '1';
-            PowerGlitch.glitch(nextSection, {
-              playMode: 'always',
-              createContainers: true,
-              hideOverflow: true,
-              timing: {
-                duration: 2000,
-                iterations: 1,
-              },
-              glitchTimeSpan: {
-                start: 0,
-                end: 0.7,
-              },
-              shake: {
-                velocity: 15,
-                amplitudeX: 0.2,
-                amplitudeY: 0.2,
-              },
-              slice: {
-                count: 6,
-                velocity: 15,
-                minHeight: 0.02,
-                maxHeight: 0.15,
-                hueRotate: true,
-              },
-              pulse: false,
-            });
-          }, 500); // Delay to ensure the title glitches first
-        }
-
-        observer.unobserve(entry.target);
       }
     });
   });
 
   glitchTitles.forEach(title => {
-    observer.observe(title);
+    titleObserver.observe(title);
   });
+
+  // Glitch projects-section only the first time it comes into view
+  const projectsSection = document.querySelector('.projects-section');
+  const projectsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        PowerGlitch.glitch(entry.target, {
+          playMode: 'always',
+          createContainers: true,
+          hideOverflow: true,
+          timing: {
+            duration: 2000,
+            iterations: 1,
+          },
+          glitchTimeSpan: {
+            start: 0,
+            end: 0.7,
+          },
+          shake: {
+            velocity: 15,
+            amplitudeX: 0.2,
+            amplitudeY: 0.2,
+          },
+          slice: {
+            count: 6,
+            velocity: 15,
+            minHeight: 0.02,
+            maxHeight: 0.15,
+            hueRotate: true,
+          },
+          pulse: false,
+        });
+        entry.target.style.opacity = '1'; // Ensure the opacity is set back to 1 after glitching
+        projectsObserver.unobserve(entry.target);
+      }
+    });
+  });
+
+  projectsObserver.observe(projectsSection);
 
   const navbar = document.querySelector(".navbar");
   const hamburger = document.querySelector(".hamburger");
@@ -153,5 +157,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("open");
+  });
+
+  navLinks.querySelectorAll("li").forEach(li => {
+    li.addEventListener("click", (event) => {
+      event.preventDefault();
+      const targetId = li.querySelector("a").getAttribute("href").substring(1);
+      const targetElement = document.getElementById(targetId);
+      const offset = navbar.offsetHeight;
+      const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth"
+      });
+      navLinks.classList.remove("open");
+    });
   });
 });

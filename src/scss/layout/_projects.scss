@@ -124,20 +124,50 @@
   }
 
   @media (max-width: 768px) {
+    .projects-section {
+      gap: 1rem;
+    }
+
     .project {
-      flex-direction: column;
+      flex-direction: column !important;
+      align-items: flex-start !important;
 
-      .project-info {
-        text-align: center;
+      .project-image {
+        width: 100% !important;
 
-        .badges-container {
-          justify-content: center;
+        img {
+          width: 100% !important;
+          height: auto !important;
+          border-radius: $border-radius $border-radius 0 0 !important;
         }
       }
 
-      .project-image {
-        img {
-          border-radius: $border-radius;
+      .project-info {
+        width: 100% !important;
+        text-align: left !important;
+        padding: 1rem !important;
+
+        .project-title {
+          font-size: 1.2rem !important;
+          margin-bottom: 1rem !important;
+        }
+
+        .project-description {
+          font-size: 1rem !important;
+          margin-bottom: 1rem !important;
+        }
+
+        .project-link {
+          color: $link-color !important;
+          text-decoration: none !important;
+
+          &:hover {
+            text-decoration: underline !important;
+          }
+        }
+
+        .badges-container {
+          justify-content: flex-start !important;
         }
       }
     }
