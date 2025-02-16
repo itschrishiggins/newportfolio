@@ -157,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("open");
+    hamburger.classList.toggle("open");
   });
 
   navLinks.querySelectorAll("li").forEach(li => {
@@ -171,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         behavior: "smooth"
       });
       navLinks.classList.remove("open");
+      hamburger.classList.remove("open");
     });
   });
 });

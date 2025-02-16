@@ -67,7 +67,7 @@
     .title {
       font-size: 3rem;
       font-weight: 700;
-      font-family: "JetBrains Mono", monospace;
+      font-family: "SoureCode Pro", monospace;
     }
 
     .subtitle {
@@ -107,11 +107,29 @@
     text-align: center;
 
     .about-title {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
     }
 
     p {
       text-align: center;
+
+      &:nth-of-type(odd) {
+        text-align: left;
+      }
+
+      &:nth-of-type(even) {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.scroll-down {
+  span {
+    font-size: 2rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
     }
   }
 }

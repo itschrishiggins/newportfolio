@@ -22,6 +22,7 @@
       justify-content: center;
       height: 50px;
       width: auto;
+      font-family: "SoureCode Pro", monospace;
 
       i {
         font-size: 1.5rem;
@@ -41,9 +42,5 @@
 
   @media (max-width: 768px) {
     text-align: center;
-
-    .expertise-tiles {
-      justify-content: center;
-    }
   }
 }

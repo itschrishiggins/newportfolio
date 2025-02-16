@@ -89,13 +89,12 @@ body {
     flex-direction: column;
     gap: 20px;
     position: absolute;
-    top: 60px;
+    top: 50px;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
+    background-color: #ffb80a;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   }
   .navbar ul.open {
     display: flex;
@@ -169,7 +168,7 @@ body {
   .title-container .title {
     font-size: 3rem;
     font-weight: 700;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "SoureCode Pro", monospace;
   }
   .title-container .subtitle {
     font-size: 1.2rem;
@@ -205,10 +204,25 @@ body {
     text-align: center;
   }
   .about-container .about-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   .about-container p {
     text-align: center;
+  }
+  .about-container p:nth-of-type(odd) {
+    text-align: left;
+  }
+  .about-container p:nth-of-type(even) {
+    text-align: right;
+  }
+}
+
+.scroll-down span {
+  font-size: 2rem;
+}
+@media (max-width: 768px) {
+  .scroll-down span {
+    font-size: 1.5rem;
   }
 }
 
@@ -237,6 +251,25 @@ body {
   justify-content: flex-start;
 }
 .projects-container .projects-section .project:nth-child(odd) .project-info .badges-container .badge {
+  border: none;
+}
+.projects-container .projects-section .project:nth-child(odd) .project-info .project-links {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.projects-container .projects-section .project:nth-child(odd) .project-info .project-links .project-link {
+  background-color: transparent;
+  color: #181818;
+  border: 1px solid #181818;
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-family: "SoureCode Pro", monospace;
+  text-decoration: none;
+}
+.projects-container .projects-section .project:nth-child(odd) .project-info .project-links .project-link:hover {
   background-color: #181818;
   color: #ffb80a;
 }
@@ -260,6 +293,25 @@ body {
   justify-content: flex-end;
 }
 .projects-container .projects-section .project:nth-child(even) .project-info .badges-container .badge {
+  border: none;
+}
+.projects-container .projects-section .project:nth-child(even) .project-info .project-links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.projects-container .projects-section .project:nth-child(even) .project-info .project-links .project-link {
+  background-color: transparent;
+  color: #181818;
+  border: 1px solid #181818;
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-family: "SoureCode Pro", monospace;
+  text-decoration: none;
+}
+.projects-container .projects-section .project:nth-child(even) .project-info .project-links .project-link:hover {
   background-color: #181818;
   color: #ffb80a;
 }
@@ -301,11 +353,30 @@ body {
   margin-top: 0.5rem;
 }
 .projects-container .projects-section .project .project-info .badges-container .badge {
-  background-color: #ffb80a;
-  color: #181818;
+  border: none;
   padding: 0.2rem 0.5rem;
   border-radius: 5px;
   font-size: 0.85rem;
+  font-family: "SoureCode Pro", monospace;
+}
+.projects-container .projects-section .project .project-info .project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.projects-container .projects-section .project .project-info .project-links .project-link {
+  background-color: transparent;
+  color: #181818;
+  border: 1px solid #181818;
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-family: "SoureCode Pro", monospace;
+  text-decoration: none;
+}
+.projects-container .projects-section .project .project-info .project-links .project-link:hover {
+  background-color: #181818;
+  color: #ffb80a;
 }
 @media (max-width: 768px) {
   .projects-container .projects-section {
@@ -346,6 +417,9 @@ body {
   .projects-container .project .project-info .badges-container {
     justify-content: flex-start !important;
   }
+  .projects-container .project .project-info .project-links {
+    justify-content: flex-start !important;
+  }
 }
 
 .expertise-container {
@@ -369,6 +443,7 @@ body {
   justify-content: center;
   height: 50px;
   width: auto;
+  font-family: "SoureCode Pro", monospace;
 }
 .expertise-container .expertise-tiles .tile i {
   font-size: 1.5rem;
@@ -384,9 +459,6 @@ body {
 @media (max-width: 768px) {
   .expertise-container {
     text-align: center;
-  }
-  .expertise-container .expertise-tiles {
-    justify-content: center;
   }
 }
 
@@ -453,10 +525,11 @@ body {
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 0.9rem;
+  font-family: "SoureCode Pro", monospace;
 }
 @media (max-width: 768px) {
   .badge {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -587,10 +660,10 @@ body {
 
 @media (max-width: 768px) {
   .main-container {
-    margin: 2rem 5vw;
+    margin: 4rem 5vw;
   }
   .content-container .contact-container {
-    padding: 2rem 5vw;
+    padding: 4rem 5vw;
   }
 }
 

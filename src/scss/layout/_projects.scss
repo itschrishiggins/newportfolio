@@ -29,8 +29,30 @@
             display: flex;
             justify-content: flex-start;
             .badge {
-              background-color: $text-color;
-              color: $background-color;
+              border: none;
+            }
+          }
+
+          .project-links {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1rem;
+            margin-top: 1rem;
+
+            .project-link {
+              background-color: transparent;
+              color: $text-color;
+              border: 1px solid $text-color;
+              padding: 0.2rem 0.6rem;
+              border-radius: 5px;
+              font-size: 0.85rem;
+              font-family: "SoureCode Pro", monospace;
+              text-decoration: none;
+
+              &:hover {
+                background-color: $text-color;
+                color: $background-color;
+              }
             }
           }
         }
@@ -59,8 +81,30 @@
             display: flex;
             justify-content: flex-end;
             .badge {
-              background-color: $text-color;
-              color: $background-color;
+              border: none;
+            }
+          }
+
+          .project-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1rem;
+
+            .project-link {
+              background-color: transparent;
+              color: $text-color;
+              border: 1px solid $text-color;
+              padding: 0.2rem 0.6rem;
+              border-radius: 5px;
+              font-size: 0.85rem;
+              font-family: "SoureCode Pro", monospace;
+              text-decoration: none;
+
+              &:hover {
+                background-color: $text-color;
+                color: $background-color;
+              }
             }
           }
         }
@@ -113,11 +157,33 @@
           margin-top: 0.5rem;
 
           .badge {
-            background-color: $background-color;
-            color: $text-color;
+            border: none;
             padding: 0.2rem 0.5rem;
             border-radius: 5px;
             font-size: 0.85rem;
+            font-family: "SoureCode Pro", monospace;
+          }
+        }
+
+        .project-links {
+          display: flex;
+          gap: 1rem;
+          margin-top: 1rem;
+
+          .project-link {
+            background-color: transparent;
+            color: $text-color;
+            border: 1px solid $text-color;
+            padding: 0.2rem 0.6rem;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-family: "SoureCode Pro", monospace;
+            text-decoration: none;
+
+            &:hover {
+              background-color: $text-color;
+              color: $background-color;
+            }
           }
         }
       }
@@ -168,6 +234,10 @@
         }
 
         .badges-container {
+          justify-content: flex-start !important;
+        }
+
+        .project-links {
           justify-content: flex-start !important;
         }
       }
